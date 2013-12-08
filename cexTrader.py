@@ -2,19 +2,25 @@ import cexapi
 
 configFile = open('cex.config', 'r')
 
-lines = configFile.readlines()
+line = configFile.readline()
 
-for line in lines:
-    config = line.split(":")
+config = line.split(":")
 
 username = config[1]
 api_key = config[3]
 api_secret = config[5]
 
+print username
+print api_key
+print api_secret
+
 api = cexapi.api(username,api_key,api_secret)
 
 ticker = api.ticker('GHS/BTC')
 balance = api.balance()
+
+print ticker
+print api.balance()
 
 ticker.items()
 balance.items()
